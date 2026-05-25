@@ -1,0 +1,97 @@
+<div class="inicio-container">
+
+  <!-- Hero -->
+  <div class="welcome-section">
+    <div class="welcome-text">
+      <h1>Bienvenido a AgroPacayales</h1>
+      <p class="subtitle">Sistema integral de gestión agrícola</p>
+    </div>
+  </div>
+
+  <!-- Stats dinámicas -->
+  <div class="stats-grid">
+    <a routerLink="/productos" class="stat-card stat-card--amber">
+      <div class="stat-card__icon"><span class="material-icons">inventory</span></div>
+      <div class="stat-card__info">
+        <strong>{{ totalProductos }}</strong>
+        <span>Productos activos</span>
+      </div>
+      <span class="stat-card__arrow">→</span>
+    </a>
+    <a routerLink="/parcelas" class="stat-card stat-card--green">
+      <div class="stat-card__icon"><span class="material-icons">landscape</span></div>
+      <div class="stat-card__info">
+        <strong>{{ totalParcelas }}</strong>
+        <span>Parcelas registradas</span>
+      </div>
+      <span class="stat-card__arrow">→</span>
+    </a>
+    <a routerLink="/cultivos" class="stat-card stat-card--teal">
+      <div class="stat-card__icon"><span class="material-icons">grass</span></div>
+      <div class="stat-card__info">
+        <strong>{{ totalCultivos }}</strong>
+        <span>Cultivos activos</span>
+      </div>
+      <span class="stat-card__arrow">→</span>
+    </a>
+    <a routerLink="/usuarios" class="stat-card stat-card--purple">
+      <div class="stat-card__icon"><span class="material-icons">people</span></div>
+      <div class="stat-card__info">
+        <strong>{{ totalUsuarios }}</strong>
+        <span>Usuarios del sistema</span>
+      </div>
+      <span class="stat-card__arrow">→</span>
+    </a>
+  </div>
+
+  <!-- Módulos -->
+  <h2 class="section-title">Módulos del sistema</h2>
+  <div class="modules-grid">
+
+    <a routerLink="/parcelas" class="module-card">
+      <div class="module-card__header module-card__header--green">
+        <span class="module-icon"><span class="material-icons">landscape</span></span>
+      </div>
+      <div class="module-card__body">
+        <h3>Parcelas</h3>
+        <p>Gestiona las parcelas agrícolas, ubicaciones, tipos de suelo y responsables.</p>
+        <span class="module-link">Ir a Parcelas →</span>
+      </div>
+    </a>
+
+    <a routerLink="/cultivos" class="module-card">
+      <div class="module-card__header module-card__header--teal">
+        <span class="module-icon"><span class="material-icons">grass</span></span>
+      </div>
+      <div class="module-card__body">
+        <h3>Cultivos</h3>
+        <p>Registra y monitorea los cultivos asociados a cada parcela con sus parámetros.</p>
+        <span class="module-link">Ir a Cultivos →</span>
+      </div>
+    </a>
+
+    <a routerLink="/productos" class="module-card">
+      <div class="module-card__header module-card__header--amber">
+        <span class="module-icon"><span class="material-icons">inventory</span></span>
+      </div>
+      <div class="module-card__body">
+        <h3>Productos</h3>
+        <p>Controla el inventario de insumos agrícolas, precios, stock y proveedores.</p>
+        <span class="module-link">Ir a Productos →</span>
+      </div>
+    </a>
+
+    <a routerLink="/usuarios" class="module-card">
+      <div class="module-card__header module-card__header--purple">
+        <span class="module-icon"><span class="material-icons">people</span></span>
+      </div>
+      <div class="module-card__body">
+        <h3>Usuarios</h3>
+        <p>Administra los usuarios del sistema, sus roles y permisos de acceso.</p>
+        <span class="module-link">Ir a Usuarios →</span>
+      </div>
+    </a>
+
+  </div>
+
+</div>
