@@ -1,0 +1,124 @@
+<div class="page-container">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div class="page-header__left">
+      <div class="page-icon"><span class="material-icons">people</span></div>
+      <div>
+        <h1>Gestión de Usuarios</h1>
+        <p>Administra los usuarios y sus roles en el sistema</p>
+      </div>
+    </div>
+    <div class="page-header__actions">
+      <app-toggle-filter [isActive]="verActivos" (onChange)="toggleActivos($event)"></app-toggle-filter>
+      <button class="btn-new" (click)="nuevoUsuario()">
+        <span>+</span> Nuevo Usuario
+      </button>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row" *ngIf="usuarios.length > 0">
+    <div class="stat-pill stat-pill--purple">
+      <span class="stat-pill__icon"><span class="material-icons">person</span></span>
+      <div>
+        <strong>{{ usuarios.length }}</strong>
+        <span>{{ verActivos ? 'Activos' : 'Inactivos' }}</span>
+      </div>
+    </div>
+    <div class="stat-pill stat-pill--red">
+      <span class="stat-pill__icon"><span class="material-icons">vpn_key</span></span>
+      <div>
+        <strong>{{ getAdmins() }}</strong>
+        <span>Administradores</span>
+      </div>
+    </div>
+    <div class="stat-pill stat-pill--blue">
+      <span class="stat-pill__icon"><span class="material-icons">engineering</span></span>
+      <div>
+        <strong>{{ getOperadores() }}</strong>
+        <span>Operadores</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <app-usuario-form
+    *ngIf="mostrarFormulario"
+    [usuarioEditar]="usuarioEditar"
+    (guardar)="guardarUsuario($event)"
+    (cancelar)="cancelarEdicion()">
+  </app-usuario-form>
+
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="usuarios.length === 0">
+    <div class="empty-state__icon"><span class="material-icons" style="font-size: inherit;">person</span></div>
+    <h3>No hay usuarios {{ verActivos ? 'activos' : 'inactivos' }}</h3>
+    <p *ngIf="verActivos">Crea el primer usuario haciendo clic en "Nuevo Usuario"</p>
+    <button class="btn-new" *ngIf="verActivos" (click)="nuevoUsuario()">+ Nuevo Usuario</button>
+  </div>
+
+  <!-- Tabla -->
+  <div class="table-card" *ngIf="usuarios.length > 0">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Contratación</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of usuarios" [class.row--inactive]="!u.estado">
+            <td class="td-id">#{{ u.idUsuario }}</td>
+            <td>
+              <div class="user-cell">
+                <div class="user-avatar">{{ (u.nombre || '?')[0] }}{{ (u.apellido || '')[0] }}</div>
+                <div>
+                  <span class="user-name">{{ u.nombre }} {{ u.apellido }}</span>
+                </div>
+              </div>
+            </td>
+            <td class="td-email">{{ u.correo }}</td>
+            <td>
+              <span class="badge" [ngClass]="getRolClass(u.rol)">{{ u.rol }}</span>
+            </td>
+            <td class="td-date">{{ u.fechaContratacion || '—' }}</td>
+            <td>
+              <span class="status-dot" [class.status-dot--on]="u.estado" [class.status-dot--off]="!u.estado">
+                {{ u.estado ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+            <td class="td-actions">
+              <button *ngIf="u.estado" class="action-btn action-btn--edit" (click)="editarUsuario(u)" title="Editar"><span class="material-icons" style="font-size: 20px;">edit</span></button>
+              <button *ngIf="u.estado" class="action-btn action-btn--delete" (click)="confirmarEliminar(u.idUsuario!)" title="Eliminar"><span class="material-icons" style="font-size: 20px;">delete</span></button>
+              <button *ngIf="!u.estado" class="action-btn action-btn--restore" (click)="restaurarUsuario(u.idUsuario!)" title="Restaurar"><span class="material-icons" style="font-size: 20px;">restore</span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Confirm dialog -->
+  <app-confirm-dialog
+    [isOpen]="mostrarConfirmacion"
+    title="Eliminar Usuario"
+    message="¿Estás seguro de eliminar este usuario? El registro quedará inactivo."
+    confirmButtonText="Eliminar"
+    cancelButtonText="Cancelar"
+    [isDanger]="true"
+    (onConfirmClick)="eliminarUsuario()"
+    (onCancelClick)="cancelarConfirmacion()">
+  </app-confirm-dialog>
+
+</div>
+
+
+
+
