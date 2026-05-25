@@ -1,0 +1,240 @@
+.inicio-container {
+  padding: 10px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Hero ── */
+.welcome-section {
+  background: url('/Inicio.jpg') no-repeat center center;
+  background-size: cover;
+  border-radius: 20px;
+  padding: 60px 40px;
+  margin-bottom: 28px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  min-height: 220px;
+}
+
+.welcome-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(27, 67, 50, 0.9) 0%, rgba(27, 67, 50, 0.4) 100%);
+  z-index: 1;
+}
+
+.welcome-text {
+  position: relative;
+  z-index: 2;
+}
+
+.welcome-text h1 {
+  margin: 0 0 12px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-emoji {
+  font-size: 90px;
+  opacity: 0.8;
+  position: relative;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Stats ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.stat-card--amber  { background: #fef3c7; }
+.stat-card--green  { background: #d1fae5; }
+.stat-card--teal   { background: #ccfbf1; }
+.stat-card--purple { background: #ede9fe; }
+
+.stat-card__icon {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+
+.stat-card__icon .material-icons {
+  font-size: inherit;
+  color: #111827; /* Solid icon color */
+}
+
+.stat-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.stat-card__info strong {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1;
+}
+
+.stat-card__info span {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.stat-card__arrow {
+  font-size: 18px;
+  color: #9ca3af;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover .stat-card__arrow {
+  transform: translateX(4px);
+  color: #374151;
+}
+
+/* ── Section title ── */
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 20px;
+}
+
+/* ── Modules ── */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.module-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.module-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.12);
+}
+
+.module-card__header {
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.module-card__header--green  { background: #d1fae5; color: #065f46; }
+.module-card__header--teal   { background: #ccfbf1; color: #115e59; }
+.module-card__header--amber  { background: #fef3c7; color: #92400e; }
+.module-card__header--purple { background: #ede9fe; color: #5b21b6; }
+
+.module-icon {
+  font-size: 48px;
+  transition: transform 0.3s ease;
+}
+
+.module-icon .material-icons {
+  font-size: inherit;
+}
+
+.module-card:hover .module-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.module-card__body {
+  padding: 20px 24px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.module-card__body h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.module-card__body p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.module-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: #059669;
+  transition: gap 0.2s;
+}
+
+.module-card:hover .module-link {
+  color: #047857;
+}
+
+@media (max-width: 768px) {
+  .welcome-section { padding: 32px 24px; }
+  .welcome-text h1 { font-size: 1.6rem; }
+  .welcome-emoji { font-size: 56px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .modules-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+}
