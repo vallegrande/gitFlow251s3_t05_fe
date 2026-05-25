@@ -1,91 +1,161 @@
- body {
-    margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #ffffff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+:root {
+  /* Brand Colors - Agricultural Palette */
+  --primary: #1b4332;       /* Verde Bosque Profundo */
+  --primary-light: #2d6a4f; /* Verde Medio */
+  --accent: #40916c;        /* Verde Hoja */
+  --accent-soft: #d8f3dc;   /* Menta suave */
+  
+  /* Neutral Colors */
+  --bg-main: #f1f5f9;       /* Gris azulado muy claro */
+  --bg-sidebar: #1b4332;
+  --bg-card: #ffffff;
+  
+  /* Text Colors */
+  --text-primary: #0f172a;  /* Slate 900 */
+  --text-secondary: #475569; /* Slate 600 */
+  --text-muted: #94a3b8;    /* Slate 400 */
+  
+  /* Status Colors */
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
 
-section {
-    padding: 80px 20px;
-    text-align: center;
+  /* UI Elements */
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --radius: 16px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
-h1 {
-    font-size: 40px;
-    color: #222;
-
-
-    body {
-        margin: 0;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        background-color: #f5f7fb;
-        /* ya no blanco puro */
-    }
-
-
-    section {
-        padding: 80px 20px;
-        text-align: center;
-    }
-
-
-    h1 {
-        font-size: 40px;
-        color: #222;
-    }
-
-
-    h2 {
-        color: #222;
-    }
-
-
-    p {
-        color: #555;
-    }
-
-
-    button {
-        padding: 12px 25px;
-        border: none;
-        background-color: #6366f1;
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: 600;
-    }
-
-
-    button:hover {
-        background-color: #4f46e5;
-    }
+body {
+  font-family: 'Outfit', 'Inter', sans-serif; /* Outfit gives a more premium feel */
+  background: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.6;
 }
 
-
-h2 {
-    color: #222;
+.main-content {
+  flex: 1;
+  background: var(--bg-main);
+  padding: 30px;
+  overflow-y: auto;
+  animation: fadeIn 0.5s ease-out;
 }
 
-
-p {
-    color: #666;
-    font-size: 16px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-
-button {
-    padding: 12px 25px;
-    border: none;
-    background-color: #4f46e5;
-    /* violeta moderno */
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 
-button:hover {
-    background-color: #4338ca;
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* ── Estado tabs (global, usado en todos los módulos) ── */
+.estado-tabs {
+  display: flex;
+  background: #f3f4f6;
+  border-radius: 10px;
+  padding: 4px;
+  gap: 2px;
+}
+
+.estado-tab {
+  padding: 7px 16px;
+  border: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: #6b7280;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.estado-tab:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* Tab activo — verde */
+.estado-tab--active {
+  background: white;
+  color: #065f46;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* Tab inactivos — cuando está seleccionado */
+.estado-tab--inactive {
+  background: white;
+  color: #991b1b;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
